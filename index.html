@@ -24,29 +24,39 @@
         display: flex;
         flex-direction: column;
       }
-      #calculatorDiv {
+      .calc-wrapper {
+        display: block;
+        width: 100%;
+        clear: both;
         flex: 1 0 auto;
+      }
+      #calculatorDiv {
+        display: block;
         width: 100%;
       }
       #main_div {
-        clear: both;
+        display: block;
+        clear: both !important;
       }
       #install-btn {
         margin: 10px auto;
-        display: block;
-        clear: both;
+        display: block !important;
+        clear: both !important;
       }
       footer {
         flex-shrink: 0;
         text-align: center;
         padding: 10px 0;
-        clear: both;
+        display: block !important;
+        clear: both !important;
         width: 100%;
       }
     </style>
   </head>
   <body>
-    <div id="calculatorDiv"></div>
+    <div class="calc-wrapper">
+      <div id="calculatorDiv"></div>
+    </div>
     <div id="main_div"></div>
     
     <button id="install-btn">Install pwa</button>
