@@ -14,6 +14,28 @@
     <script src="/Simulator.js"></script>
     <script id="h84statej" type="application/json" data-url="/calcstate.h84statej"></script>
     <script id="ti84faceplate" type="application/json" data-url="https://mn.testnav.com/client/texasinstruments/images/TI84CE_touch.svg"></script>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      #calculatorDiv {
+        flex: 1 0 auto;
+      }
+      #install-btn {
+        margin: 10px auto;
+      }
+      footer {
+        flex-shrink: 0;
+        text-align: center;
+        padding: 10px 0;
+      }
+    </style>
   </head>
   <body>
     <div id="calculatorDiv"></div>
@@ -30,6 +52,9 @@
         navigator.serviceWorker.register('sw.js');
     }
 
+    if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone || localStorage.getItem('pwa-installed') === 'true') {
+        installBtn.style.display = 'none';
+    }
 
     window.addEventListener('beforeinstallprompt', (e) => {
         
@@ -37,7 +62,9 @@
  
         deferredPrompt = e;
         
-        installBtn.style.display = 'block';
+        if (!window.matchMedia('(display-mode: standalone)').matches && !navigator.standalone && localStorage.getItem('pwa-installed') !== 'true') {
+            installBtn.style.display = 'block';
+        }
     });
 
     
@@ -51,6 +78,7 @@
         const { outcome } = await deferredPrompt.userChoice;
         if (outcome === 'accepted') {
             console.log('User accepted the install prompt');
+            localStorage.setItem('pwa-installed', 'true');
         }
         
 
@@ -62,6 +90,7 @@
     window.addEventListener('appinstalled', () => {
         deferredPrompt = null;
         installBtn.style.display = 'none';
+        localStorage.setItem('pwa-installed', 'true');
     });
     </script>
 
