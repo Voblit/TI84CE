@@ -21,40 +21,43 @@
         height: 100%;
       }
       body {
-        display: flex;
-        flex-direction: column;
+        margin-bottom: 70px !important;
       }
       .calc-wrapper {
-        display: block;
         width: 100%;
-        clear: both;
-        flex: 1 0 auto;
       }
       #calculatorDiv {
-        display: block;
         width: 100%;
-      }
-      #main_div {
-        display: block;
-        clear: both !important;
       }
       #install-btn {
-        margin: 10px auto;
-        display: block !important;
-        clear: both !important;
+        position: fixed !important;
+        bottom: 35px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 99999 !important;
+        margin: 0 !important;
       }
       footer {
-        flex-shrink: 0;
-        text-align: center;
-        padding: 10px 0;
-        display: block !important;
-        clear: both !important;
-        width: 100%;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 30px !important;
+        background: #ffffff;
+        text-align: center !important;
+        z-index: 99999 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      footer h6 {
+        margin: 5px 0 0 0 !important;
       }
     </style>
   </head>
   <body>
-        <button id="install-btn">Install pwa</button>
+    <script>//the calc divs where being fucking devas and would send the install and footers flying, fuck them 
+    </script>
+    <button id="install-btn">Install pwa</button>
 <footer><h6>Made with ♡&☆ by yaboy <a href="https://voblit.vercel.app" target="_blank">Voblit</a></h6></footer>
     <div class="calc-wrapper">
       <div id="calculatorDiv"></div>
